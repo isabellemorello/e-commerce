@@ -8,22 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> <!-- Collegamento alla libreria di Bootstrap -->
 </head>
 <body>
-    <h1>Benvenuti nel nostro e-commerce</h1>
+    <h1>Benvenuto, <%= nameUser %> </h1>
     <!-- Per visualizzare nell'index il form dei contatti -->
     <div class="col-md-6 form"> 
-        <form action="/" method="post" class="row g-3 form">
-        <div class="col-md-6"><input class="form-control" type="text" name="nome" placeholder="Nome"></input></div>
-        <div class="col-md-6"><input class="form-control" type="text" name="cognome" placeholder="Cognome"></input></div>
-        <div class="col-md-6"> <input class="form-control" type="text" name="email" placeholder="E-mail"></input></div>
-       <div class="col-md-6"><input class="form-control" type="text" name="username" placeholder="Username"></input></div>
-        <div class="col-md-12"><input class="form-control" type="text" name="password" placeholder="Password"></input></div>
-        <!-- <div class="col-md-12"><input class="form-control" type="text" name="name" placeholder="Conferma Password"></input></div> -->
-        <div class="col-md-6"> <input class="form-control" type="text" name="citta" placeholder="Città"></input></div>
-       <div class="col-md-6"><input class="form-control" type="text" name="indirizzo" placeholder="Indirizzo"></input></div>
-       <div class="col-md-6"><input class="form-control" type="text" name="telefono" placeholder="Telefono"></input></div>
-       <div class="col-md-12"><button class="btn btn-primary" type="submit">Cliccami</button></div> 
-        
-    </form>
+      
     </div>
    
 <!-- Collegamento alla libreria Bootstrap per JavaScript -->

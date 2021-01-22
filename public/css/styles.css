@@ -1,21 +1,90 @@
+h2 {
+  font-family: Hammersmith One;
+  margin: 0 20px;
+}
+
+.navbar {
+  background-color: #73566e;
+  height: 5rem;
+}
+.nav-item {
+  list-style: none;
+}
+
+.container {
+  -webkit-user-select: auto;
+}
+
+.navbar-collapse {
+  -webkit-user-select: auto;
+}
+
+div.right {
+  -webkit-user-select: auto;
+  margin: 0 20px;
+}
+
+i.bi {
+  margin: 0 20px;
+}
+
+button.btn:hover {
+  color: white;
+  background-color: #e21d43;
+}
+
+button.btn-md {
+  color: white;
+  background-color: #f25c78;
+  width: 100%;
+}
+
+button#scopri {
+  width: 35%;
+}
+
+a#registrati {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.product-card {
+  background-color: white;
+}
+
+.product-card img {
+  object-fit: contain;
+  object-position: center;
+}
+
 button.btn-primary {
-    background-color: #F25C78;
-    border-color: #F25C78;
-    width: 20rem;
-    height: 3rem;
+  background-color: #f25c78;
+  border-color: #f25c78;
+  width: 20rem;
+  height: 3rem;
 }
 
 button.contatti {
-    background-color: aquamarine;
+  background-color: aquamarine;
 }
 
 div.form {
-    margin: 6rem auto;
-    text-align: center;
-    display: block;
+  margin: 6rem auto;
+  text-align: center;
+  display: block;
 }
 
 form.form {
   margin-left: auto;
   margin-right: auto;
+}
+
+footer {
+  margin: 0 auto;
+  background-color: #f2c46d;
+  color: #292929;
+}
+
+body.body {
+  background-color: #fbf8ef;
 }

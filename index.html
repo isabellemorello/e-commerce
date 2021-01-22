@@ -6,27 +6,115 @@
     <title>E-commerce</title>
      <link rel="stylesheet" href="/css/styles.css">  <!-- Collegamento al file styles.css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> <!-- Collegamento alla libreria di Bootstrap -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Rubik:wght@300;800&display=swap');
+    </style>
 </head>
-<body>
-    <h1>Benvenuti nel nostro e-commerce</h1>
-    <!-- Per visualizzare nell'index il form dei contatti -->
-    <div class="col-md-6 form"> 
-        <form action="/" method="post" class="row g-3 form">
-        <div class="col-md-6"><input class="form-control" type="text" name="nome" placeholder="Nome"></input></div>
-        <div class="col-md-6"><input class="form-control" type="text" name="cognome" placeholder="Cognome"></input></div>
-        <div class="col-md-6"> <input class="form-control" type="text" name="email" placeholder="E-mail"></input></div>
-       <div class="col-md-6"><input class="form-control" type="text" name="username" placeholder="Username"></input></div>
-        <div class="col-md-12"><input class="form-control" type="text" name="password" placeholder="Password"></input></div>
-        <!-- <div class="col-md-12"><input class="form-control" type="text" name="name" placeholder="Conferma Password"></input></div> -->
-        <div class="col-md-6"> <input class="form-control" type="text" name="citta" placeholder="Città"></input></div>
-       <div class="col-md-6"><input class="form-control" type="text" name="indirizzo" placeholder="Indirizzo"></input></div>
-       <div class="col-md-6"><input class="form-control" type="text" name="telefono" placeholder="Telefono"></input></div>
-       <div class="col-md-12"><button class="btn btn-primary" type="submit">Cliccami</button></div> 
-        
-    </form>
+<body class="body">
+
+    <!-- ------------------------------NAVBAR-------------------------- -->
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+            <a class="navbar-brand " href="#">
+                <h2 class="d-inline-block align-top">whiteberry</h2>
+            </a>  
+            </div>    
+            <div class="row dropdown" id="navbarNavDropdown">
+                <div class="col right">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-person" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                    </svg>
+                                </i>
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li class="btn btn-dark"><a class="dropdown-item" href="#">Sign-in</a></li>
+                                <li><a class="dropdown-item" href="#">Sign-up</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Il mio profilo</a></li>
+                                <li><a class="dropdown-item" href="#">I miei ordini</a></li>
+                              </ul>
+                            
+                        </li>
+                        <li class="nav-item mt-2">
+                            <i class="bi bi-bag" id="bag">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-bag" viewBox="0 0 16 16">
+                                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                                </svg>
+                            </i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-   
-<!-- Collegamento alla libreria Bootstrap per JavaScript -->
+    </div>
+  </nav>
+</header>
+
+<!-- ----------------------------MAIN------------------------------ -->
+<main class="container mb-5">
+<!-- ----------------------------FOTO HOMEPAGE------------------------------ -->
+    <div class="container mb-3">
+        <div class="col-md-12 shadow-sm">
+            <img src="images/donna.png" alt="shopping-image" width="100%" height="100%">
+        </div>
+    </div>
+
+
+    <div class="row rounded shadow mt-5 px-3 py-5">
+        <div class="row mx-2">
+            <div class="col-md-4 shadow-sm">
+                <img class="mx-5" src="images/maglione1.png" alt="maglione-verde" width="300px" height="350px">
+                <!-- <div class="container">
+                    
+                </div>
+                 -->
+
+                <div class="row mx-2">
+                    <div class="col-8 mx-2">
+                        <h5>Maglione - Classic</h5>
+                    </div>        
+                    <div class="col-4 mx-2">
+                        <h6 class="text-end">€ 35.99</h6>
+                    </div>             
+                </div>
+                <div class="row mx-2 pt-2">
+                    <div class="col-12">
+                        <p>Composizione: 80% acrilica, 20% poliestere, Materiale: Maglia</p>
+                    </div>
+                </div>
+                <hr class="divider">
+                <div class="row mt-2 mb-4">
+                    <div class="col text-end">
+                        <button class="btn btn-dark">Scopri di più</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</main>
+
+<!-- ----------------------------FOOTER------------------------------ -->
+
+<footer class="py-4">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12 align-middle">
+              <h5>Contatti:</h5>
+              <ul class="list-unstyled">
+                <li>Numero verde: 800 000 000</li>
+                <Pordenone class="mb-3">via X - Pordenone (PN)</li>
+              </ul>
+              <p class="text-center mb-0">Copyright &copy; Del Bianco & Morello</p>
+            </div>
+</footer>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>

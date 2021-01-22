@@ -29,6 +29,22 @@ mongoose.connect(
   }
 );
 
+// Creo lo schema della collezione "catalogo"
+const catalogoSchema = new mongoose.Schema({
+  codice: String,
+  nomeProdotto: String,
+  materiale: String,
+  colore: String,
+  prezzo: Number,
+  dettagli: String,
+  image: String,
+  quantity: { type: Number, min: 1 },
+  taglia: String,
+});
+
+// Creo un modello che fa riferimento a catalogoSchema
+const Catalogo = mongoose.model("Catalogo", catalogoSchema);
+
 // Creo lo schema della collezione "users"
 const userSchema = new mongoose.Schema({
   nome: String,
@@ -41,118 +57,88 @@ const userSchema = new mongoose.Schema({
   telefono: Number,
 });
 
-// Creare un modello che fa riferimento a userSchema
+// Creo un modello che fa riferimento a userSchema
 const User = mongoose.model("User", userSchema);
-
-// Creo una variabile che utilizza userSchema per inserire i dati nel DB
-const user1 = new User({
-  nome: "Isabelle",
-  cognome: "Morello",
-  email: "ciao@gmail.com",
-  username: "isabellemorello",
-  password: "unipordenone",
-  città: "Gorizia",
-  indirizzo: "via a caso",
-  telefono: 9839475433,
-});
-
-const user2 = new User({
-  nome: "Elena",
-  cognome: "Del Bianco",
-  email: "ciao@gmail.com",
-  username: "isabellemorello",
-  password: "unipordenone",
-  città: "Gorizia",
-  indirizzo: "via a caso",
-  telefono: 9839475433,
-});
-
-// User.insertMany([user1, user2], function(err){
-//     if(err) {
-//                 console.log(err);
-//             } else {
-//                 console.log("Succesfully deleted to userDB");
-//             }
-// });
-
-
 
 // Chiamata get
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
+  Catalogo.find({}, function (err, foundItems) {
+    res.render("home", { catalogo: foundItems });
+  });
 });
 
 app.get("/contatti", function (req, res) {
   res.sendFile(__dirname + "/contatti.html");
 });
 
-app.get("/login", function(req, res){
-    res.sendFile(__dirname + "/login.html")
+app.get("/login", function (req, res) {
+  res.sendFile(__dirname + "/login.html");
 
-    // const login = req.params.login;
-    // User.findOne({nome: login}, function(err, foundName){
-    //     if(!err) {
-    //         console.log(foundName);
-    //     } else {
-    //         console.log(err);
-    //     }
-    // });
-    // res.sendFile(__dirname + "/login.html");
+  // const login = req.params.login;
+  // User.findOne({nome: login}, function(err, foundName){
+  //     if(!err) {
+  //         console.log(foundName);
+  //     } else {
+  //         console.log(err);
+  //     }
+  // });
+  // res.sendFile(__dirname + "/login.html");
 });
 
-app.post("/login", function(req, res) {
-    const email = req.body.email;
-    const password = req.body.password;
+app.post("/login", function (req, res) {
+  const email = req.body.email;
+  const password = req.body.password;
 
-    const user = User.find({}, function(err){
-        if(err){
-            console.log(err);
-        } else {
-            if(email === user && password === user){
+  const user = User.find({}, function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      if (email === user && password === user) {
         console.log("Bravo la mail è giusta");
-        }
+      }
     }
-});
-res.redirect("/login");
+  });
+  res.redirect("/login");
 });
 
 // Chiamata post
 app.post("/", function (req, res) {
-    const nome = req.body.nome; // sto andando a prende il contenuto dell'input che ha come nome nome
-    const cognome = req.body.cognome;
-    const email = req.body.email;
-    const username = req.body.username;
-    const password = req.body.password;
-    const città = req.body.citta;
-    const indirizzo = req.body.indirizzo;
-    const telefono = req.body.telefono;
+  const nome = req.body.nome; // sto andando a prende il contenuto dell'input che ha come nome nome
+  const cognome = req.body.cognome;
+  const email = req.body.email;
+  const username = req.body.username;
+  const password = req.body.password;
+  const città = req.body.citta;
+  const indirizzo = req.body.indirizzo;
+  const telefono = req.body.telefono;
 
-    // Per fare una specie di codifica di Hash
-function hashPassword(passwordHash) {
+  // Per fare una specie di codifica di Hash
+  function hashPassword(passwordHash) {
     const result = "";
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     const charactersLenght = characters.length;
-    for(var i=0; i<passwordHash; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLenght));
+    for (var i = 0; i < passwordHash; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLenght));
     }
     return result;
-};
+  }
 
-// hashPassword(password.length);
+  // hashPassword(password.length);
 
-    const user1 = new User({
-        nome: nome,
-        cognome: cognome,
-        email: email,
-        username: username,
-        password: password,
-        città: città,
-        indirizzo: indirizzo,
-        telefono: telefono,
-      });
+  const user1 = new User({
+    nome: nome,
+    cognome: cognome,
+    email: email,
+    username: username,
+    password: password,
+    città: città,
+    indirizzo: indirizzo,
+    telefono: telefono,
+  });
 
-      user1.save();
-    //console.log(nome + " " + cognome + email + "\n " + username + "\n " + password + "\n " + città + "\n " + indirizzo + "\n " + telefono );
+  user1.save();
+  //console.log(nome + " " + cognome + email + "\n " + username + "\n " + password + "\n " + città + "\n " + indirizzo + "\n " + telefono );
   res.redirect("/contatti");
 });
 

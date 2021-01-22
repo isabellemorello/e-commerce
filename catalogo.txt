@@ -135,10 +135,52 @@ const catalogo9 = new Catalogo({
   taglia: "S, M, L, XL",
 });
 
+  FUNZIONE PER INSERIRE TUTTI GLI ARTICOLI NEL DB DEL CATALOGO
 // Catalogo.insertMany([catalogo1, catalogo2, catalogo3, catalogo4, catalogo5, catalogo6, catalogo7, catalogo8, catalogo9], function (err) {
 //   if (err) {
 //     console.log(err);
 //   } else {
 //     console.log("Successfully saved to catalogos");
 //   }
+// });
+
+
+
+
+
+
+
+
+
+
+USER
+// Creo una variabile che utilizza userSchema per inserire i dati nel DB
+const user1 = new User({
+  nome: "Isabelle",
+  cognome: "Morello",
+  email: "ciao@gmail.com",
+  username: "isabellemorello",
+  password: "unipordenone",
+  città: "Gorizia",
+  indirizzo: "via a caso",
+  telefono: 9839475433,
+});
+
+const user2 = new User({
+  nome: "Elena",
+  cognome: "Del Bianco",
+  email: "ciao@gmail.com",
+  username: "isabellemorello",
+  password: "unipordenone",
+  città: "Gorizia",
+  indirizzo: "via a caso",
+  telefono: 9839475433,
+});
+
+// User.insertMany([user1, user2], function(err){
+//     if(err) {
+//                 console.log(err);
+//             } else {
+//                 console.log("Succesfully deleted to userDB");
+//             }
 // });

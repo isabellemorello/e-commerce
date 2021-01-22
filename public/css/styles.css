@@ -28,8 +28,35 @@ i.bi {
   margin: 0 20px;
 }
 
+i.bi-truck {
+  margin-left: 0;
+  margin-top: 2rem;
+}
+
 button.btn:hover {
   color: white;
+  background-color: #e21d43;
+}
+
+button#taglia {
+  width: 85%;
+  border-color: #f25c78;
+}
+
+button.btn-outline:hover {
+  color: #292929;
+  background-color: #fbf8ef;
+  border-color: #e21d43;
+  border-width: 2px;
+}
+
+button#aggiungi {
+  width: 85%;
+  color: white;
+  background-color: #f25c78;
+}
+
+button#aggiungi:hover {
   background-color: #e21d43;
 }
 
@@ -41,7 +68,13 @@ button.btn-md {
 
 button#scopri {
   width: 35%;
+  border-color: #f25c78;
+  margin-left: 0;
 }
+
+/* li.dropdown-item:active {
+  text-decoration: none;
+} */
 
 a#registrati {
   font-size: 12px;
@@ -50,6 +83,12 @@ a#registrati {
 
 .product-card {
   background-color: white;
+}
+
+div.prodotto {
+  text-align: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .product-card img {
@@ -87,4 +126,21 @@ footer {
 
 body.body {
   background-color: #fbf8ef;
+}
+
+.list-group {
+  width: 85%;
+}
+
+li.list-group-item {
+  background-color: #fbf8ef;
+  border-width: 1.5px;
+}
+
+div#consegna {
+  width: 85%;
+  border: solid;
+  border-width: 1.5px;
+  border-color: #dbd9d1;
+  padding: 1.5rem 1rem 0.5rem;
 }

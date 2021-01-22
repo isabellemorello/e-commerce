@@ -39,9 +39,16 @@ const catalogoSchema = new mongoose.Schema({
   dettagli: String,
   image: String,
   quantity: { type: Number, min: 1 },
-  taglia: String,
+  taglia: [
+    {
+      extraSmall: String,
+      small: String,
+      medium: String,
+      large: String,
+      extraLarge: String,
+    },
+  ],
 });
-
 // Creo un modello che fa riferimento a catalogoSchema
 const Catalogo = mongoose.model("Catalogo", catalogoSchema);
 
@@ -56,15 +63,224 @@ const userSchema = new mongoose.Schema({
   indirizzo: String,
   telefono: Number,
 });
-
 // Creo un modello che fa riferimento a userSchema
 const User = mongoose.model("User", userSchema);
+
+const catalogo1 = new Catalogo({
+  codice: "SKI-01",
+  nomeProdotto: "Minigonna english style",
+  materiale: "Composizione: Lana, Fodera: 98% poliestere, 2% elastan",
+  colore: "Blu",
+  prezzo: 59.99,
+  dettagli: "Chiusura: Cerniera, Fantasia: Principe di Galles",
+  image: "/images/gonna.jpg",
+  quantity: "",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
+});
+
+const catalogo2 = new Catalogo({
+  codice: "SWE-01",
+  nomeProdotto: "Maglione - Classic",
+  materiale: "Composizione: 80% acrilica, 20% poliestere, Materiale: Maglia",
+  colore: "Verde",
+  prezzo: 35.99,
+  dettagli: "Scollo: Tondo, Fantasia: Monocromo",
+  image: "/images/maglione1.png",
+  quantity: "",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
+});
+
+const catalogo3 = new Catalogo({
+  codice: "SWE-02",
+  nomeProdotto: "Maglione - Classic",
+  materiale: "Composizione: 80% acrilica, 20% poliestere, Materiale: Maglia",
+  colore: "Rosa antico",
+  prezzo: 35.99,
+  dettagli: "Scollo: Tondo, Fantasia: Monocromo",
+  image: "/images/maglione2.png",
+  quantity: "",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
+});
+
+const catalogo4 = new Catalogo({
+  codice: "SNE-01",
+  nomeProdotto: "Sneakers basse",
+  materiale: "Pelle e tessuto",
+  colore: "Black",
+  prezzo: 79.99,
+  dettagli: "Punta: Tonda, Chiusura: Lacci, Tipo di tacco: Senza tacco",
+  image: "/images/sneakers.png",
+  quantity: "",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
+});
+
+const catalogo5 = new Catalogo({
+  codice: "HEE-01",
+  nomeProdotto: "Decolleté",
+  materiale:
+    "Materiale parte superiore: Finta pelle di alta qualità, Rivestimento: Finta pelle / Tessuto, Soletta: Similpelle, Suola: Materiale sintetico, Fodera: Senza fodera, Materiale: Fintapelle",
+  colore: "Oro",
+  prezzo: 45.99,
+  dettagli:
+    "Punta: A punta, Tipo di tacco: Tacco a spillo, Chiusura: Fibia, Fantasia: Monocromo",
+  image: "/images/sandali.jpg",
+  quantity: "",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
+});
+
+const catalogo6 = new Catalogo({
+  codice: "SWE-03",
+  nomeProdotto: "Maglione - Righe",
+  materiale: "Composizione: 75% acrilica, 25% nylon, Materiale: Maglia",
+  colore: "Grigio chiaro e blu",
+  prezzo: 32.99,
+  dettagli: "Scollo: Tondo, Fantasia: Righe",
+  image: "/images/maglione3.jpg",
+  quantity: "",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
+});
+
+const catalogo7 = new Catalogo({
+  codice: "BAG-01",
+  nomeProdotto: "Borsa a tracolla",
+  materiale: "Materiale esterno: Fintapelle, Materiale della fodera: Tessuto",
+  colore: "Argento e rosso",
+  prezzo: 22.99,
+  dettagli:
+    "Scomparti: Scomparto cellulare, Chiusura: Chiusura a scatto, Fantasia: Bicolore",
+  image: "/images/borsa.jpg",
+  quantity: "",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
+});
+
+const catalogo8 = new Catalogo({
+  codice: "EYE-01",
+  nomeProdotto: "Occhiali da sole",
+  materiale: "Plastica",
+  colore: "Nero e fucsia",
+  prezzo: 23.99,
+  dettagli:
+    "Forma occhiali: Cat eye, Fantasia: Bicolore, Colore delle lenti: Scuro, Protezione UV: sì, Portaocchiali: Sacchetto ",
+  image: "/images/occhiali.jpg",
+  quantity: "",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
+});
+
+const catalogo9 = new Catalogo({
+  codice: "JEA-01",
+  nomeProdotto: "Shorts di jeans",
+  materiale: "Composizione: 100% cotone, Materiale: Jeans",
+  colore: "Light-blue denim",
+  prezzo: 19.99,
+  dettagli:
+    "Tipo di motivo: Colore unico, Tipo: Taglio dritto, Dettaglio: Strappato - Tasche, Chiusura: Bottone + Cerniera",
+  image: "/images/pantaloncini.jpg",
+  quantity: "",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
+});
+
+Catalogo.insertMany(
+  [
+    catalogo1,
+    catalogo2,
+    catalogo3,
+    catalogo4,
+    catalogo5,
+    catalogo6,
+    catalogo7,
+    catalogo8,
+    catalogo9,
+  ],
+  function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Successfully saved to catalogos");
+    }
+  }
+);
 
 // Chiamata get
 app.get("/", function (req, res) {
   Catalogo.find({}, function (err, foundItems) {
     res.render("home", { catalogo: foundItems });
   });
+});
+
+app.get("/prodotti", function (req, res) {
+  res.render("prodotti");
 });
 
 app.get("/contatti", function (req, res) {

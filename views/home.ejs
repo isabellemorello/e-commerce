@@ -14,34 +14,34 @@
     </div>
   </div>
 
-  <div class="row rounded shadow-sm mx-4 px-3 py-4">
-    <div class="row rounded">
-      <!-- tag ejs per inserire codice javascript => per ogni articolo del catologo vengono inserite le informazioni  -->
-      <% catalogo.forEach(item => { %>
-      <div class="col-md-4 shadow-sm product-card my-4">
-        <img class="mx-5" src="<%=item.image%>" width="300px" height="350px" />
-        <div class="row mx-2">
-          <div class="col-8">
-            <h5><%= item.nomeProdotto %></h5>
-          </div>
-          <div class="col-4">
-            <h5 class="text-end">€ <%= item.prezzo%></h5>
-          </div>
+  <div class="row mt-5">
+    <!-- tag ejs per inserire codice javascript => per ogni articolo del catologo vengono inserite le informazioni  -->
+    <% catalogo.forEach(item => { %>
+    <div class="col-lg-4 col-md-9 shadow-sm rounded product-card my-4">
+      <img class="mx-5" src="<%=item.image%>" width="300px" height="350px" />
+      <div class="row mx-2">
+        <div class="col-8">
+          <h5><%= item.nomeProdotto %></h5>
         </div>
-        <div class="row mx-2 pt-2">
-          <div class="col-12">
-            <p><%= item.colore %></p>
-          </div>
-        </div>
-        <hr class="divider" />
-        <div class="row mt-2 mb-4">
-          <div class="col text-end">
-            <button class="btn btn-md" id="scopri">Scopri di più</button>
-          </div>
+        <div class="col-4">
+          <h5 class="text-end">€ <%= item.prezzo%></h5>
         </div>
       </div>
-      <% }) %>
+      <div class="row mx-2 pt-2">
+        <div class="col-12">
+          <p><%= item.colore %></p>
+        </div>
+      </div>
+      <hr class="divider" />
+      <div class="row mt-2 mb-4">
+        <div class="col text-end">
+          <a href="prodotti"
+            ><button class="btn btn-md" id="scopri">Scopri di più</button></a
+          >
+        </div>
+      </div>
     </div>
+    <% }) %>
   </div>
 </main>
 

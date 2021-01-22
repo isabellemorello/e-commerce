@@ -1,29 +1,21 @@
-const catalogoSchema = new mongoose.Schema({
-  codice: String,
-  nomeProdotto: String,
-  materiale: String,
-  colore: String,
-  prezzo: Number,
-  valuta: String,
-  dettagli: String,
-  image: String,
-  quantity: { type: Number, min: 1 },
-  taglia: String,
-});
-
-const Catalogo = mongoose.model("Catalogo", catalogoSchema);
-
 const catalogo1 = new Catalogo({
   codice: "SKI-01",
   nomeProdotto: "Minigonna english style",
   materiale: "Composizione: Lana, Fodera: 98% poliestere, 2% elastan",
   colore: "Blu",
   prezzo: 59.99,
-  valuta: "EUR IVA inclusa",
   dettagli: "Chiusura: Cerniera, Fantasia: Principe di Galles",
-  image: "/images/gonna.jpg",
+  image: "/images/gonna.png",
   quantity: "",
-  taglia: "S, M, L, XL",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
 });
 
 const catalogo2 = new Catalogo({
@@ -32,11 +24,18 @@ const catalogo2 = new Catalogo({
   materiale: "Composizione: 80% acrilica, 20% poliestere, Materiale: Maglia",
   colore: "Verde",
   prezzo: 35.99,
-  valuta: "EUR IVA inclusa",
   dettagli: "Scollo: Tondo, Fantasia: Monocromo",
   image: "/images/maglione1.png",
   quantity: "",
-  taglia: "S, M, L, XL",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
 });
 
 const catalogo3 = new Catalogo({
@@ -45,11 +44,18 @@ const catalogo3 = new Catalogo({
   materiale: "Composizione: 80% acrilica, 20% poliestere, Materiale: Maglia",
   colore: "Rosa antico",
   prezzo: 35.99,
-  valuta: "EUR IVA inclusa",
   dettagli: "Scollo: Tondo, Fantasia: Monocromo",
   image: "/images/maglione2.png",
   quantity: "",
-  taglia: "S, M, L, XL",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
 });
 
 const catalogo4 = new Catalogo({
@@ -58,11 +64,18 @@ const catalogo4 = new Catalogo({
   materiale: "Pelle e tessuto",
   colore: "Black",
   prezzo: 79.99,
-  valuta: "EUR IVA inclusa",
   dettagli: "Punta: Tonda, Chiusura: Lacci, Tipo di tacco: Senza tacco",
   image: "/images/sneakers.png",
   quantity: "",
-  taglia: "S, M, L, XL",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
 });
 
 const catalogo5 = new Catalogo({
@@ -72,12 +85,19 @@ const catalogo5 = new Catalogo({
     "Materiale parte superiore: Finta pelle di alta qualità, Rivestimento: Finta pelle / Tessuto, Soletta: Similpelle, Suola: Materiale sintetico, Fodera: Senza fodera, Materiale: Fintapelle",
   colore: "Oro",
   prezzo: 45.99,
-  valuta: "EUR IVA inclusa",
   dettagli:
     "Punta: A punta, Tipo di tacco: Tacco a spillo, Chiusura: Fibia, Fantasia: Monocromo",
-  image: "/images/sandali.jpg",
+  image: "/images/sandali.png",
   quantity: "",
-  taglia: "S, M, L, XL",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
 });
 
 const catalogo6 = new Catalogo({
@@ -86,11 +106,18 @@ const catalogo6 = new Catalogo({
   materiale: "Composizione: 75% acrilica, 25% nylon, Materiale: Maglia",
   colore: "Grigio chiaro e blu",
   prezzo: 32.99,
-  valuta: "EUR IVA inclusa",
   dettagli: "Scollo: Tondo, Fantasia: Righe",
-  image: "/images/maglione3.jpg",
+  image: "/images/maglione3.png",
   quantity: "",
-  taglia: "S, M, L, XL",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
 });
 
 const catalogo7 = new Catalogo({
@@ -99,12 +126,19 @@ const catalogo7 = new Catalogo({
   materiale: "Materiale esterno: Fintapelle, Materiale della fodera: Tessuto",
   colore: "Argento e rosso",
   prezzo: 22.99,
-  valuta: "EUR IVA inclusa",
   dettagli:
     "Scomparti: Scomparto cellulare, Chiusura: Chiusura a scatto, Fantasia: Bicolore",
-  image: "/images/borsa.jpg",
+  image: "/images/borsa.png",
   quantity: "",
-  taglia: "S, M, L, XL",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
 });
 
 const catalogo8 = new Catalogo({
@@ -113,12 +147,19 @@ const catalogo8 = new Catalogo({
   materiale: "Plastica",
   colore: "Nero e fucsia",
   prezzo: 23.99,
-  valuta: "EUR IVA inclusa",
   dettagli:
     "Forma occhiali: Cat eye, Fantasia: Bicolore, Colore delle lenti: Scuro, Protezione UV: sì, Portaocchiali: Sacchetto ",
-  image: "/images/occhiali.jpg",
+  image: "/images/occhiali.png",
   quantity: "",
-  taglia: "S, M, L, XL",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
 });
 
 const catalogo9 = new Catalogo({
@@ -127,12 +168,19 @@ const catalogo9 = new Catalogo({
   materiale: "Composizione: 100% cotone, Materiale: Jeans",
   colore: "Light-blue denim",
   prezzo: 19.99,
-  valuta: "EUR IVA inclusa",
   dettagli:
     "Tipo di motivo: Colore unico, Tipo: Taglio dritto, Dettaglio: Strappato - Tasche, Chiusura: Bottone + Cerniera",
-  image: "/images/pantaloncini.jpg",
+  image: "/images/pantaloncini.png",
   quantity: "",
-  taglia: "S, M, L, XL",
+  taglia: [
+    {
+      extraSmall: "XS",
+      small: "S",
+      medium: "M",
+      large: "L",
+      extraLarge: "XL",
+    },
+  ],
 });
 
   FUNZIONE PER INSERIRE TUTTI GLI ARTICOLI NEL DB DEL CATALOGO

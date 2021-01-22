@@ -3,13 +3,17 @@
 
 <main class="container mb-5">
   <div class="row mt-5">
-    <div class="col-lg-6 col-md-4 prodotto">
-      <img src="images/maglione1.png" width="60%" class="mt-4" />
+    <div class="col-lg-6 flex-column col-md-4 prodotto">
+      <div
+        class="d-flex flex-column align-items-center justify-content-center h-100"
+      >
+        <img src="<%=prodotto.image%>" width="60%" />
+      </div>
     </div>
     <div class="col-lg-6 col-md-4">
-      <h3>Nome prodotto</h3>
-      <h5>€ 23,99</h5>
-      <h6 class="mt-5">Colore: Blu</h6>
+      <h3><%= prodotto.nomeProdotto %></h3>
+      <h5>€ <%= prodotto.prezzo %></h5>
+      <h6 class="mt-5">Colore: <%= prodotto.colore %></h6>
       <button
         class="btn btn-outline dropdown-toggle mt-5"
         id="taglia"
@@ -33,11 +37,11 @@
         <ul class="list-group mt-5">
           <li class="list-group-item">
             <strong>Materiale:</strong>
-            <p class="mt-2">Lorem Ipsum....</p>
+            <p class="mt-2"><%= prodotto.materiale %></p>
           </li>
           <li class="list-group-item">
             <strong>Dettagli:</strong>
-            <p class="mt-2">Lorem Ipsum...</p>
+            <p class="mt-2"><%= prodotto.dettagli %></p>
           </li>
         </ul>
         <div class="rounded-2 mt-5" id="consegna">

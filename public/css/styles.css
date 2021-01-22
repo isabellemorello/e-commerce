@@ -87,7 +87,7 @@ a#registrati {
 
 div.prodotto {
   text-align: center;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 

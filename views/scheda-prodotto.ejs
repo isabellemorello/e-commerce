@@ -3,14 +3,19 @@
 
 <main class="container mb-5">
   <div class="row mt-5">
-    <div class="col-lg-6 flex-column col-md-4 prodotto">
+    <div class="col-xl-6 col-lg-6 col-md-12 flex-column col-md-4 prodotto">
       <div
         class="d-flex flex-column align-items-center justify-content-center h-100"
       >
-        <img src="<%=prodotto.image%>" width="60%" />
+        <img
+          src="<%=prodotto.image%>"
+          width="400px"
+          class="mb-5"
+          class="rounded prodotto"
+        />
       </div>
     </div>
-    <div class="col-lg-6 col-md-4">
+    <div class="col-xl-6 col-lg-6 col-md-12">
       <h3><%= prodotto.nomeProdotto %></h3>
       <h5>€ <%= prodotto.prezzo %></h5>
       <h6 class="mt-5">Colore: <%= prodotto.colore %></h6>

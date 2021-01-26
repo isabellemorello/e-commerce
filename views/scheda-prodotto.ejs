@@ -7,6 +7,7 @@
       <div
         class="d-flex flex-column align-items-center justify-content-center h-100"
       >
+        <!-- per visualizzare le informazioni per singola scheda prodotto -->
         <img
           src="<%=prodotto.image%>"
           width="400px"
@@ -36,7 +37,13 @@
         <li class="dropdown-item">XL</li>
       </ul>
       <div>
-        <button class="btn mt-3" id="aggiungi">Aggiungi al carrello</button>
+        <form action="/carrello" method="post">
+          <input type="hidden" name="userId" value="<%=user._id%>" />
+          <input type="hidden" name="prodottoId" value="<%=prodotto._id%>" />
+          <button class="btn mt-3" type="submit" id="aggiungi">
+            Aggiungi al carrello
+          </button>
+        </form>
       </div>
       <div>
         <ul class="list-group mt-5">
@@ -71,4 +78,5 @@
 </main>
 
 <!-- ----------------------------FOOTER------------------------------ -->
+
 <%- include("footer") %>

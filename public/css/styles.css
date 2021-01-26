@@ -1,11 +1,13 @@
 h2 {
-  font-family: Hammersmith One;
+  font-family: Codystar;
   margin: 0 20px;
+}
+strong {
+  font-family: Shanti;
 }
 
 .navbar {
   background-color: #73566e;
-  height: 5rem;
 }
 .nav-item {
   list-style: none;
@@ -143,4 +145,21 @@ div#consegna {
   border-width: 1.5px;
   border-color: #dbd9d1;
   padding: 1.5rem 1rem 0.5rem;
+}
+div#elimina {
+  color: #83827e;
+  font-size: smaller;
+}
+
+a.border {
+  text-decoration: none;
+  border-color: black;
+}
+
+a.quantity {
+  background-color: #f25c78;
+  color: white;
+  border-radius: 20%;
+  padding: 2px 6px;
+  text-decoration: none;
 }

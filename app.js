@@ -66,46 +66,113 @@ const userSchema = new mongoose.Schema({
 // Creo un modello che fa riferimento a userSchema
 const User = mongoose.model("User", userSchema);
 
-// Chiamata get
-app.get("/", function (req, res) {
+//Creo lo schema della collezione "carrello"
+const carrelloSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: User }, // ref = riferimento all'utente
+  articolo: { type: mongoose.Schema.Types.ObjectId, ref: Catalogo }, // ref = riferimento all'articolo nel catalogo
+  quantity: Number,
+});
+// Creo un modello che fa riferimento a userSchema
+const Carrello = mongoose.model("Carrello", carrelloSchema);
+
+// const carrello1 = Carrello({
+//   user: user2,
+//   articolo: catalogo1,
+//   quantity: 1,
+//   prezzo: 34,
+// });
+// carrello1.save();
+
+// //RESTful API per la Home
+app.route("/").get(function (req, res) {
   Catalogo.find({}, function (err, foundItems) {
     res.render("home", { catalogo: foundItems });
   });
 });
 
-app.get("/prodotti/:itemId", function (req, res) {
-  Catalogo.findOne({ _id: req.params.itemId }, function (err, foundOneItem) {
-    if (foundOneItem) {
-      res.render("scheda-prodotto", { prodotto: foundOneItem });
-    } else {
-      res.send("No articles matching that title was found");
-    }
-  });
+//RESTful API per la Scheda Prodotti
+// Vado a pescare i parametri di ogni singolo prodotto nel database attraverso
+// l'id per fargli apparire così nella scheda prodotto
+app.route("/prodotti/:itemId").get(async function (req, res) {
+  // Catalogo.findOne({ _id: req.params.itemId }, function (err, foundOneItem) {
+  //   if (foundOneItem) {
+  //     res.render("scheda-prodotto", { prodotto: foundOneItem, user: });
+  //   } else {
+  //     res.send("No articles matching that title was found");
+  //   }
+  // });
+  // Javascript aspetta che termini questa promise e il valore che torna è il valore di ritorno della promise
+  const foundOneCatalogItem = await Catalogo.findOne({
+    _id: req.params.itemId, // gli viene passato l'id come path parameter
+  }).exec();
+
+  const foundOneUser = await User.findOne({
+    _id: "6006bb17e2122594c3500a6d",
+  }).exec();
+
+  if (foundOneCatalogItem && foundOneUser) {
+    res.render("scheda-prodotto", {
+      prodotto: foundOneCatalogItem,
+      user: foundOneUser,
+    });
+  } else {
+    res.send("No articles matching that title was found");
+  }
+
+  // const promise = new Promise(function (resolve) {
+  //   setTimeout(function () {
+  //     resolve("isabelle");
+  //   }, 1000);
+  // });
+
+  // promise
+  //   .then(function (value) {
+  //     console.log(value);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
 });
-
-// app.get("/prodotti/:customNameItem", function (req, res) {
-//   const customNameItem = req.params.customNameItem;
-//   Catalogo.findOne(
-//     { nomeProdotto: customNameItem },
-//     function (err, foundOneItem) {
-//       if (!err) {
-//         if (!foundOneItem) {
-//           console.log("This page doesn't exist");
-//         }
-//       } else {
-//         res.render("prodotti", { prodotti: foundOneItem });
-//         console.log("GREAT JOB! Exists");
-//       }
-
-// if (foundOneItem) {
-//   res.render("prodotti", { prodotti: foundOneItem });
-// } else {
-//   res.send(err);
-// }
-
+//   carrello1.save(function (err) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log("Articolo aggiunto al Carrello");
 //     }
-//   );
+//   });
+//   res.render("carrello");
 // });
+
+app
+  .route("/carrello")
+  .get(async function (req, res) {
+    const foundCarrello = await Carrello.find({}).exec();
+
+    if (foundCarrello) {
+      const items = [];
+      for await (const cartItem of foundCarrello) {
+        const item = await Catalogo.findOne({ _id: cartItem.articolo }).exec();
+        items.push(item);
+      }
+
+      res.render("carrello", { cartItems: items });
+    } else {
+      res.send("Non ci sono articoli nel carrello");
+    }
+  })
+  .post(async function (req, res) {
+    const { userId, prodottoId } = req.body;
+
+    // Aspettiamo che venga creato il documento passato alla create()
+    await Carrello.create({
+      user: userId,
+      articolo: prodottoId,
+      quantity: 1,
+    });
+
+    // e poi facciamo il redirect verso il path /carrello
+    res.redirect("/carrello");
+  });
 
 app.get("/contatti", function (req, res) {
   res.sendFile(__dirname + "/contatti.html");
@@ -142,45 +209,50 @@ app.post("/login", function (req, res) {
 });
 
 // Chiamata post
-app.post("/resgister", function (req, res) {
-  const nome = req.body.nome; // sto andando a prende il contenuto dell'input che ha come nome nome
-  const cognome = req.body.cognome;
-  const email = req.body.email;
-  const username = req.body.username;
-  const password = req.body.password;
-  const città = req.body.citta;
-  const indirizzo = req.body.indirizzo;
-  const telefono = req.body.telefono;
+app
+  .route("/register")
+  .get(function (req, res) {
+    res.render("registrazione");
+  })
+  .post(function (req, res) {
+    const nome = req.body.nome; // sto andando a prende il contenuto dell'input che ha come nome nome
+    const cognome = req.body.cognome;
+    const email = req.body.email;
+    const username = req.body.username;
+    const password = req.body.password;
+    const città = req.body.citta;
+    const indirizzo = req.body.indirizzo;
+    const telefono = req.body.telefono;
 
-  // Per fare una specie di codifica di Hash
-  function hashPassword(passwordHash) {
-    const result = "";
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const charactersLenght = characters.length;
-    for (var i = 0; i < passwordHash; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLenght));
-    }
-    return result;
-  }
+    // Per fare una specie di codifica di Hash
+    // function hashPassword(passwordHash) {
+    //   const result = "";
+    //   const characters =
+    //     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    //   const charactersLenght = characters.length;
+    //   for (var i = 0; i < passwordHash; i++) {
+    //     result += characters.charAt(Math.floor(Math.random() * charactersLenght));
+    //   }
+    //   return result;
+    // }
 
-  // hashPassword(password.length);
+    // hashPassword(password.length);
 
-  const user1 = new User({
-    nome: nome,
-    cognome: cognome,
-    email: email,
-    username: username,
-    password: password,
-    città: città,
-    indirizzo: indirizzo,
-    telefono: telefono,
+    const user1 = new User({
+      nome: nome,
+      cognome: cognome,
+      email: email,
+      username: username,
+      password: password,
+      città: città,
+      indirizzo: indirizzo,
+      telefono: telefono,
+    });
+
+    user1.save();
+    //console.log(nome + " " + cognome + email + "\n " + username + "\n " + password + "\n " + città + "\n " + indirizzo + "\n " + telefono );
+    res.redirect("/contatti");
   });
-
-  user1.save();
-  //console.log(nome + " " + cognome + email + "\n " + username + "\n " + password + "\n " + città + "\n " + indirizzo + "\n " + telefono );
-  res.redirect("/contatti");
-});
 
 app.post("/contatti", function (req, res) {
   res.redirect("/");

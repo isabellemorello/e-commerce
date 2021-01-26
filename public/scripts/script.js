@@ -8,3 +8,13 @@ $(document).ready(function () {
     }
   );
 });
+
+document.getElementById("minus").addEventListener("click", minus);
+
+function minus() {
+  // const minus = document.querySelector("minus");
+  alert("Minus");
+  // for (let i = 20; i > 1; --i) {
+  //   console.log("Clicked");
+  // }
+}

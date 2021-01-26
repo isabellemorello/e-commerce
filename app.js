@@ -38,16 +38,6 @@ const catalogoSchema = new mongoose.Schema({
   prezzo: Number,
   dettagli: String,
   image: String,
-  quantity: { type: Number, min: 1 },
-  taglia: [
-    {
-      extraSmall: String,
-      small: String,
-      medium: String,
-      large: String,
-      extraLarge: String,
-    },
-  ],
 });
 // Creo un modello che fa riferimento a catalogoSchema
 const Catalogo = mongoose.model("Catalogo", catalogoSchema);
@@ -67,6 +57,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 //Creo lo schema della collezione "carrello"
+// In questo modo stiamo collegando le collezioni di user e catalogo alla collezione carrello
 const carrelloSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: User }, // ref = riferimento all'utente
   articolo: { type: mongoose.Schema.Types.ObjectId, ref: Catalogo }, // ref = riferimento all'articolo nel catalogo
@@ -83,7 +74,7 @@ const Carrello = mongoose.model("Carrello", carrelloSchema);
 // });
 // carrello1.save();
 
-// //RESTful API per la Home
+//RESTful API per la Home
 app.route("/").get(function (req, res) {
   Catalogo.find({}, function (err, foundItems) {
     res.render("home", { catalogo: foundItems });
@@ -94,13 +85,6 @@ app.route("/").get(function (req, res) {
 // Vado a pescare i parametri di ogni singolo prodotto nel database attraverso
 // l'id per fargli apparire così nella scheda prodotto
 app.route("/prodotti/:itemId").get(async function (req, res) {
-  // Catalogo.findOne({ _id: req.params.itemId }, function (err, foundOneItem) {
-  //   if (foundOneItem) {
-  //     res.render("scheda-prodotto", { prodotto: foundOneItem, user: });
-  //   } else {
-  //     res.send("No articles matching that title was found");
-  //   }
-  // });
   // Javascript aspetta che termini questa promise e il valore che torna è il valore di ritorno della promise
   const foundOneCatalogItem = await Catalogo.findOne({
     _id: req.params.itemId, // gli viene passato l'id come path parameter
@@ -118,50 +102,32 @@ app.route("/prodotti/:itemId").get(async function (req, res) {
   } else {
     res.send("No articles matching that title was found");
   }
-
-  // const promise = new Promise(function (resolve) {
-  //   setTimeout(function () {
-  //     resolve("isabelle");
-  //   }, 1000);
-  // });
-
-  // promise
-  //   .then(function (value) {
-  //     console.log(value);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
 });
-//   carrello1.save(function (err) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log("Articolo aggiunto al Carrello");
-//     }
-//   });
-//   res.render("carrello");
-// });
 
+//RESTful API per il Carrello.
+// Vado a trovare qualsiasi informazione all'interno della collezione carrello
 app
   .route("/carrello")
   .get(async function (req, res) {
     const foundCarrello = await Carrello.find({}).exec();
 
     if (foundCarrello) {
-      const items = [];
+      const items = []; // è un array vuoto finchè non si aggiunge qualcosa
       for await (const cartItem of foundCarrello) {
         const item = await Catalogo.findOne({ _id: cartItem.articolo }).exec();
-        items.push(item);
+        items.push(item); // una volta che l'articolo (id) dentro il catalogo è stato trovato viene inserito con "push" dentro l'array item
       }
 
-      res.render("carrello", { cartItems: items });
+      res.render("carrello", { cartItems: items }); // mi mostri gli articoli nel carrello
     } else {
       res.send("Non ci sono articoli nel carrello");
     }
   })
   .post(async function (req, res) {
-    const { userId, prodottoId } = req.body;
+    const { userId, prodottoId } = req.body; //Prendiamo tramite name (in scheda prodotto) i valori dei tag input
+    // Alternativa di scrittura:
+    // const userId = req.body.userId;
+    // const prodottoId = req.body.prodottoId;
 
     // Aspettiamo che venga creato il documento passato alla create()
     await Carrello.create({

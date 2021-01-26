@@ -18,9 +18,9 @@
     </div>
     <div class="col-xl-6 col-lg-6 col-md-12">
       <h3><%= prodotto.nomeProdotto %></h3>
-      <h5>€ <%= prodotto.prezzo %></h5>
-      <h6 class="mt-5">Colore: <%= prodotto.colore %></h6>
-      <button
+      <h5 class="mt-3">€ <%= prodotto.prezzo %></h5>
+      <h6 class="colore">Colore: <%= prodotto.colore %></h6>
+      <!-- <button
         class="btn btn-outline dropdown-toggle mt-5"
         id="taglia"
         role="button"
@@ -28,15 +28,45 @@
         aria-expanded="false"
       >
         Scegli una taglia
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <li class="dropdown-item">XS</li>
-        <li class="dropdown-item">S</li>
-        <li class="dropdown-item">M</li>
-        <li class="dropdown-item">L</li>
-        <li class="dropdown-item">XL</li>
-      </ul>
+      </button> -->
+      <% if (prodotto._id == "600af1ecb09c3e14e5a75881" || prodotto._id ==
+      "600af1ecb09c3e14e5a7587f") { %>
+      <select id="hidden"></select>
+      <% } else if (prodotto._id == "600af1ecb09c3e14e5a7587b" || prodotto._id
+      == "600af1ecb09c3e14e5a75879") { %>
+      <select
+        class="form-select mt-5"
+        aria-label="Default select example"
+        id="taglia"
+        onchange="myFunction()"
+      >
+        <option selected>Scegli il tuo numero</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+      </select>
+      <% } else { %>
+      <select
+        class="form-select mt-5"
+        aria-label="Default select example"
+        id="taglia"
+        onchange="myFunction()"
+      >
+        <option selected>Scegli la tua taglia</option>
+        <option value="XS">XS</option>
+        <option value="XS">S</option>
+        <option value="XS">M</option>
+        <option value="XS">L</option>
+        <option value="XS">XL</option>
+      </select>
+      <% } %>
+
       <div>
+        <!--con il metodo post catturo le info che vanno al server dopo aver cliccato il bottone 
+          "aggiungi carrello".  Prendo l'id dell'utente e del prodotto tramite request body.-->
         <form action="/carrello" method="post">
           <input type="hidden" name="userId" value="<%=user._id%>" />
           <input type="hidden" name="prodottoId" value="<%=prodotto._id%>" />
@@ -78,5 +108,10 @@
 </main>
 
 <!-- ----------------------------FOOTER------------------------------ -->
-
+<script>
+  function muFunction() {
+    const taglia = document.getElementById("taglia").value;
+    console.log(taglia);
+  }
+</script>
 <%- include("footer") %>

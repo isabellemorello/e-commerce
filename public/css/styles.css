@@ -2,6 +2,12 @@ h2 {
   font-family: Codystar;
   margin: 0 20px;
 }
+
+h6.colore {
+  margin-top: 3rem;
+  margin-bottom: 7rem;
+}
+
 strong {
   font-family: Shanti;
 }
@@ -40,7 +46,14 @@ button.btn:hover {
   background-color: #e21d43;
 }
 
-button#taglia {
+select#hidden {
+  margin-top: 6rem;
+  display: none;
+}
+
+select#taglia {
+  background-color: #fbf8ef;
+  border: solid 2px;
   width: 85%;
   border-color: #f25c78;
 }

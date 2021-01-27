@@ -2,6 +2,8 @@
 const express = require("express"); // server http che intercetta le chiamate
 const bodyParser = require("body-parser"); // per ottenere i dati inseriti con metodo post
 const mongoose = require("mongoose"); // per il colegamento al database MongoDB
+const jwt = require("jsonwebtoken");
+const env = require("dotenv");
 
 const app = express();
 
@@ -124,7 +126,7 @@ app
     }
   })
   .post(async function (req, res) {
-    const { userId, prodottoId } = req.body; //Prendiamo tramite name (in scheda prodotto) i valori dei tag input
+    const { userId, prodottoId } = req.body; //Prendiamo tramite name (in scheda prodotto) i valori dei tag in
     // Alternativa di scrittura:
     // const userId = req.body.userId;
     // const prodottoId = req.body.prodottoId;
@@ -139,6 +141,28 @@ app
     // e poi facciamo il redirect verso il path /carrello
     res.redirect("/carrello");
   });
+
+app.route("/account").get(function (req, res) {
+  User.findById(
+    { _id: "6006bb17e2122594c3500a6d" },
+    function (err, foundOneUser) {
+      if (foundOneUser) {
+        res.render("profilo", { utente: foundOneUser });
+      }
+    }
+  );
+});
+
+app.route("/account/dati").get(function (req, res) {
+  User.findById(
+    { _id: "6006bb17e2122594c3500a6d" },
+    function (err, foundOneUser) {
+      if (foundOneUser) {
+        res.render("dati-utente", { datiUtente: foundOneUser });
+      }
+    }
+  );
+});
 
 app.get("/contatti", function (req, res) {
   res.sendFile(__dirname + "/contatti.html");

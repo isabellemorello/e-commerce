@@ -6,16 +6,6 @@ const catalogo1 = new Catalogo({
   prezzo: 59.99,
   dettagli: "Chiusura: Cerniera, Fantasia: Principe di Galles",
   image: "/images/gonna.png",
-  quantity: "",
-  taglia: [
-    {
-      extraSmall: "XS",
-      small: "S",
-      medium: "M",
-      large: "L",
-      extraLarge: "XL",
-    },
-  ],
 });
 
 const catalogo2 = new Catalogo({
@@ -26,16 +16,6 @@ const catalogo2 = new Catalogo({
   prezzo: 35.99,
   dettagli: "Scollo: Tondo, Fantasia: Monocromo",
   image: "/images/maglione1.png",
-  quantity: "",
-  taglia: [
-    {
-      extraSmall: "XS",
-      small: "S",
-      medium: "M",
-      large: "L",
-      extraLarge: "XL",
-    },
-  ],
 });
 
 const catalogo3 = new Catalogo({
@@ -46,16 +26,6 @@ const catalogo3 = new Catalogo({
   prezzo: 35.99,
   dettagli: "Scollo: Tondo, Fantasia: Monocromo",
   image: "/images/maglione2.png",
-  quantity: "",
-  taglia: [
-    {
-      extraSmall: "XS",
-      small: "S",
-      medium: "M",
-      large: "L",
-      extraLarge: "XL",
-    },
-  ],
 });
 
 const catalogo4 = new Catalogo({
@@ -66,16 +36,6 @@ const catalogo4 = new Catalogo({
   prezzo: 79.99,
   dettagli: "Punta: Tonda, Chiusura: Lacci, Tipo di tacco: Senza tacco",
   image: "/images/sneakers.png",
-  quantity: "",
-  taglia: [
-    {
-      extraSmall: "XS",
-      small: "S",
-      medium: "M",
-      large: "L",
-      extraLarge: "XL",
-    },
-  ],
 });
 
 const catalogo5 = new Catalogo({
@@ -88,16 +48,6 @@ const catalogo5 = new Catalogo({
   dettagli:
     "Punta: A punta, Tipo di tacco: Tacco a spillo, Chiusura: Fibia, Fantasia: Monocromo",
   image: "/images/sandali.png",
-  quantity: "",
-  taglia: [
-    {
-      extraSmall: "XS",
-      small: "S",
-      medium: "M",
-      large: "L",
-      extraLarge: "XL",
-    },
-  ],
 });
 
 const catalogo6 = new Catalogo({
@@ -108,16 +58,6 @@ const catalogo6 = new Catalogo({
   prezzo: 32.99,
   dettagli: "Scollo: Tondo, Fantasia: Righe",
   image: "/images/maglione3.png",
-  quantity: "",
-  taglia: [
-    {
-      extraSmall: "XS",
-      small: "S",
-      medium: "M",
-      large: "L",
-      extraLarge: "XL",
-    },
-  ],
 });
 
 const catalogo7 = new Catalogo({
@@ -129,16 +69,6 @@ const catalogo7 = new Catalogo({
   dettagli:
     "Scomparti: Scomparto cellulare, Chiusura: Chiusura a scatto, Fantasia: Bicolore",
   image: "/images/borsa.png",
-  quantity: "",
-  taglia: [
-    {
-      extraSmall: "XS",
-      small: "S",
-      medium: "M",
-      large: "L",
-      extraLarge: "XL",
-    },
-  ],
 });
 
 const catalogo8 = new Catalogo({
@@ -150,16 +80,6 @@ const catalogo8 = new Catalogo({
   dettagli:
     "Forma occhiali: Cat eye, Fantasia: Bicolore, Colore delle lenti: Scuro, Protezione UV: sì, Portaocchiali: Sacchetto ",
   image: "/images/occhiali.png",
-  quantity: "",
-  taglia: [
-    {
-      extraSmall: "XS",
-      small: "S",
-      medium: "M",
-      large: "L",
-      extraLarge: "XL",
-    },
-  ],
 });
 
 const catalogo9 = new Catalogo({
@@ -171,16 +91,6 @@ const catalogo9 = new Catalogo({
   dettagli:
     "Tipo di motivo: Colore unico, Tipo: Taglio dritto, Dettaglio: Strappato - Tasche, Chiusura: Bottone + Cerniera",
   image: "/images/pantaloncini.png",
-  quantity: "",
-  taglia: [
-    {
-      extraSmall: "XS",
-      small: "S",
-      medium: "M",
-      large: "L",
-      extraLarge: "XL",
-    },
-  ],
 });
 
   FUNZIONE PER INSERIRE TUTTI GLI ARTICOLI NEL DB DEL CATALOGO

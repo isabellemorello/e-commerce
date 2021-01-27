@@ -20,20 +20,12 @@
       <h3><%= prodotto.nomeProdotto %></h3>
       <h5 class="mt-3">€ <%= prodotto.prezzo %></h5>
       <h6 class="colore">Colore: <%= prodotto.colore %></h6>
-      <!-- <button
-        class="btn btn-outline dropdown-toggle mt-5"
-        id="taglia"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        Scegli una taglia
-      </button> -->
-      <% if (prodotto._id == "600af1ecb09c3e14e5a75881" || prodotto._id ==
-      "600af1ecb09c3e14e5a7587f") { %>
+      <!-- Visualizzare la scelta della taglia, in base al tipo di prodotto -->
+      <% if (prodotto._id == "600ff64929984f138c41ce2d" || prodotto._id ==
+      "600ff64929984f138c41ce2c") { %>
       <select id="hidden"></select>
-      <% } else if (prodotto._id == "600af1ecb09c3e14e5a7587b" || prodotto._id
-      == "600af1ecb09c3e14e5a75879") { %>
+      <% } else if (prodotto._id == "600ff64929984f138c41ce2a" || prodotto._id
+      == "600ff64929984f138c41ce29") { %>
       <select
         class="form-select mt-5"
         aria-label="Default select example"
@@ -63,10 +55,9 @@
         <option value="XS">XL</option>
       </select>
       <% } %>
-
       <div>
-        <!--con il metodo post catturo le info che vanno al server dopo aver cliccato il bottone 
-          "aggiungi carrello".  Prendo l'id dell'utente e del prodotto tramite request body.-->
+        <!-- con il metodo post catturo le info che vanno al server dopo aver cliccato il bottone 
+          "aggiungi carrello".  Prendo l'id dell'utente e del prodotto tramite request body. -->
         <form action="/carrello" method="post">
           <input type="hidden" name="userId" value="<%=user._id%>" />
           <input type="hidden" name="prodottoId" value="<%=prodotto._id%>" />
@@ -87,7 +78,6 @@
           </li>
         </ul>
         <div class="rounded-2 mt-5" id="consegna">
-          <i class="bi bi-truck"></i>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="28"

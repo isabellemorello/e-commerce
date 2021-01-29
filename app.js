@@ -2,8 +2,9 @@
 const express = require("express"); // server http che intercetta le chiamate
 const bodyParser = require("body-parser"); // per ottenere i dati inseriti con metodo post
 const mongoose = require("mongoose"); // per il colegamento al database MongoDB
-const jwt = require("jsonwebtoken");
 const env = require("dotenv");
+// const userRouter = require("/login.js");
+// const User = require("/login.js");
 
 const app = express();
 
@@ -11,6 +12,9 @@ app.set("view engine", "ejs"); // per fare templating
 
 app.use(bodyParser.urlencoded({ extended: true })); // per usare body-parser
 app.use(express.static("public")); // serve il contenuto statico (non cambia da una richiesta all'altra) della cartella public
+
+// app.use(userRouter);
+
 const pass = "UniPordenone";
 const dbName = "ecommerceDB";
 
@@ -164,12 +168,23 @@ app.route("/account/dati").get(function (req, res) {
   );
 });
 
+app.route("/account/ordini").get(function (req, res) {
+  User.findById(
+    { _id: "6006bb17e2122594c3500a6d" },
+    function (err, foundOneUser) {
+      if (foundOneUser) {
+        res.render("ordini", { datiUtente: foundOneUser });
+      }
+    }
+  );
+});
+
 app.get("/contatti", function (req, res) {
   res.sendFile(__dirname + "/contatti.html");
 });
 
 app.get("/login", function (req, res) {
-  res.sendFile(__dirname + "/login.html");
+  res.render("login");
 
   // const login = req.params.login;
   // User.findOne({nome: login}, function(err, foundName){

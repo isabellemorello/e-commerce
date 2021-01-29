@@ -52,7 +52,6 @@ button.btn-md {
 footer {
   margin: 0 auto;
   background-color: #f2c46d;
-  color: #292929;
 }
 
 body.body {
@@ -139,7 +138,46 @@ div#elimina {
 }
 
 /* ---------------- Registrazione ---------------- */
+img#registrazione {
+  display: inline-block;
+  margin-right: 0;
+}
+
+h5.inserisci {
+  text-align: center;
+  margin: 4rem auto 1rem;
+}
+
+div.registrazione {
+  margin-top: 3rem;
+  background-color: rgb(232, 235, 234);
+  background-image: linear-gradient(rgb(230, 233, 229), rgb(223, 228, 231));
+}
+
+div.claim {
+  color: #f25c78;
+}
+
+h6.registrazione {
+  color: #83827e;
+}
+
+p.author {
+  margin-top: 9rem;
+  color: #83827e;
+  font-size: small;
+  -webkit-user-select: auto;
+}
+
+a.author {
+  vertical-align: baseline;
+  color: #83827e;
+  text-decoration: none;
+  -webkit-user-select: auto;
+}
+
 button.btn-primary {
+  margin-top: 2rem;
   background-color: #f25c78;
   border-color: #f25c78;
   width: 20rem;
@@ -147,7 +185,7 @@ button.btn-primary {
 }
 
 div.form {
-  margin: 6rem auto;
+  margin: 2rem auto 6rem;
   text-align: center;
   display: block;
 }
@@ -155,6 +193,19 @@ div.form {
 form.form {
   margin-left: auto;
   margin-right: auto;
+}
+
+/* ---------------- Login ---------------- */
+h3.accedi {
+  color: #f25c78;
+  display: block;
+  text-align: center;
+  margin: 4rem auto 1rem;
+}
+
+h5.accedi {
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
 /* ---------------- Profilo ---------------- */
@@ -211,6 +262,35 @@ a#shopping {
   text-decoration: none;
 }
 
+/* ---------------- Ordini ---------------- */
+div.box-ordini {
+  margin-top: 4rem;
+  margin-bottom: 5rem;
+}
+
+div.box-articoli {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+div#box-ordine {
+  background-color: #dbd9d1;
+}
+
+img.image-ordini {
+  display: block;
+  margin: auto;
+}
+
+button#riacquista {
+  border: solid 1.5px #f25c78;
+  color: #f25c78;
+}
+
+button#riacquista:hover {
+  background-color: #f25c78;
+  color: white;
+}
 /* ---------------- Dati Utente ---------------- */
 div#dati {
   text-align: left;
@@ -221,7 +301,16 @@ div#specifiche {
   margin: 0 1rem 0 0;
 }
 
+div#email {
+  margin: 0 2rem 0 0;
+}
+
+div#password {
+  margin: 0 2rem 0 0;
+}
+
 div#icona {
+  margin-bottom: 2rem;
   margin-right: 1rem;
 }
 
@@ -238,6 +327,7 @@ button#modifica:hover {
   color: white;
   background-color: #f25c78;
 }
+
 /* ---------------- Generali ---------------- */
 button.btn:hover {
   color: white;
